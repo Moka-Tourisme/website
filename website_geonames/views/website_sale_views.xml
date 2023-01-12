@@ -6,13 +6,12 @@
         <field name="inherit_id" ref="website_sale.address"/>
         <field name="arch" type="xml">
             <xpath expr="//div[hasclass('w-100')][3]" position="after">
-                <div t-attf-class="form-group #{error.get('zip_id') and 'o_has_error' or ''} col-lg-12 div_geonames"
-                     t-att-style="(not country or not country.state_ids) and 'display: none'">
+                <div t-attf-class="form-group #{error.get('zip_id') and 'o_has_error' or ''} col-lg-12 div_geonames">
                     <label for="zip_id">Location Completion</label>
-                    <input name="zip_id"
+                    <select name="zip_id"
                            t-attf-class="form-control zip_id #{error.get('zip_id') and 'is-invalid' or ''}"
                            data-init="1">
-                    </input>
+                    </select>
                 </div>
                 <div class="w-100"/>
             </xpath>
