@@ -1,13 +1,30 @@
-odoo.define('website_geonames', function (require) {
+odoo.define('website_sale_geonames.WebsiteSale', function (require) {
     'use strict';
 
-    const publicWidget = require('web.public.widget');
-    const website_sale = require('website_sale.website_sale')
-    const rpc = require('web.rpc');
+    const {WebsiteSale} = require('website_sale.website_sale');
 
-    publicWidget.registry.geonamesAutocomplete = publicWidget.Widget.extend({
-        selector: 'form.checkout_autoformat',
+    WebsiteSale.include({
         events: {
+            'change form .js_product:first input[name="add_qty"]': '_onChangeAddQuantity',
+            'mouseup .js_publish': '_onMouseupPublish',
+            'touchend .js_publish': '_onMouseupPublish',
+            'change .oe_cart input.js_quantity[data-product-id]': '_onChangeCartQuantity',
+            'click .oe_cart a.js_add_suggested_products': '_onClickSuggestedProduct',
+            'click a.js_add_cart_json': '_onClickAddCartJSON',
+            'click .a-submit': '_onClickSubmit',
+            'change form.js_attributes input, form.js_attributes select': '_onChangeAttribute',
+            'mouseup form.js_add_cart_json label': '_onMouseupAddCartLabel',
+            'touchend form.js_add_cart_json label': '_onMouseupAddCartLabel',
+            'click .show_coupon': '_onClickShowCoupon',
+            'submit .o_wsale_products_searchbar_form': '_onSubmitSaleSearch',
+            'change select[name="country_id"]': '_onChangeCountry',
+            'change #shipping_use_same': '_onChangeShippingUseSame',
+            'click .toggle_summary': '_onToggleSummary',
+            'click #add_to_cart, .o_we_buy_now, #products_grid .o_wsale_product_btn .a-submit': 'async _onClickAdd',
+            'click input.js_product_change': 'onChangeVariant',
+            'change .js_main_product [data-attribute_exclusions]': 'onChangeVariant',
+            'change oe_advanced_configurator_modal [data-attribute_exclusions]': 'onChangeVariant',
+            'click .o_product_page_reviews_link': '_onClickReviewsLink',
             'change select.zip_id': '_onZipIDChange',
         },
 
@@ -15,68 +32,53 @@ odoo.define('website_geonames', function (require) {
          * @override
          */
         start: function () {
-            const self = this;
-            self.$zip_id = self.$el.find(".zip_id");
-            self.$country_id = self.$el.find("[name=country_id]");
-            self.$state_id = self.$el.find("[name=state_id]");
-            self.$city = self.$el.find("[name=city]");
-            self.$zip = self.$el.find("[name=zip]");
-            self.choices = new Choices(document.getElementsByClassName("zip_id")[0], {
+            this._super.apply(this, arguments);
+            this.$zip_id = this.$el.find(".zip_id");
+            this.$country_id = this.$el.find("[name=country_id]");
+            this.$state_id = this.$el.find("[name=state_id]");
+            this.$city = this.$el.find("[name=city]");
+            this.$zip = this.$el.find("[name=zip]");
+            this.choices = new Choices(document.getElementsByClassName("zip_id")[0], {
                 allowHTML: true,
                 searchEnabled: true,
                 searchResultLimit: 25
             })
-            self.choices.input.element.addEventListener('keyup', this._updateCountries.bind(this))
-            // this._initChoicesGeonames();
-        },
-
-        _updateCountries: function () {
-            const self = this;
-            const query = self.choices.input.element.value;
-            rpc.query({
-                model: 'res.city.zip',
-                method: 'search_read',
-                kwargs: {
-                    fields: ['id', 'display_name', 'name', 'city_id', 'country_id', 'state_id'],
-                    domain: [
-                        ['display_name', 'ilike', query]
-                    ],
-                    limit: 25
-                }
-            }).then(function (data) {
-                    let countries = [];
-                    _.each(data, function (country) {
-                        countries.push({
-                            value: country.id,
-                            label: country.display_name,
-                            customProperties: {
-                                zip: country.name,
-                                state: country.state_id[0],
-                                country: country.country_id[0],
-                                city: country.city_id[1],
-                            }
-                        })
-                    });
-                    self.choices.setChoices(
-                        countries,
-                        'value',
-                        'label',
-                        true
-                    );
-                }
-            );
+            this.choices.input.element.addEventListener('keyup', this._updateCountries.bind(this))
         },
 
         //--------------------------------------------------------------------------
         // Private
         //--------------------------------------------------------------------------
 
+        _updateCountries: async function () {
+            const query = this.choices.input.element.value;
+            const data = await this._rpc({
+                route: '/city/get_zip',
+                params: {
+                    'query': query,
+                }
+            })
+            const countries = data.map((rec) => {
+                return {
+                    value: rec.id,
+                    label: rec.display_name,
+                    customProperties: {
+                        zip: rec.name,
+                        state: rec.state_id[0],
+                        country: rec.country_id[0],
+                        city: rec.city_id[1]
+                    }
+                }
+            });
+            this.choices.setChoices(countries, 'value', 'label', true);
+        },
+
         /**
          * @private
          * @override
          */
-        _changeCountry: function () {
-            alert("oui");
+        _changeCountry: async function () {
+            const self = this;
             if (!$("#country_id").val()) {
                 return;
             }
@@ -102,6 +104,9 @@ odoo.define('website_geonames', function (require) {
                             selectStates.append(opt);
                         });
                         selectStates.parent('div').show();
+                        if (self.data.state) {
+                            self.$state_id.val(self.data.state).trigger('change');
+                        }
                     } else {
                         selectStates.val('').parent('div').hide();
                     }
@@ -132,14 +137,6 @@ odoo.define('website_geonames', function (require) {
                     $("label[for='state_id']").get(0).toggleAttribute('required', !!data.state_required);
                 }
             });
-        },
-
-        /**
-         * @private
-         */
-        _adaptCountrySelect: async function () {
-            const self = this;
-            self.$country_id.val(self.data.country).trigger('change');
             return true;
         },
 
@@ -152,15 +149,10 @@ odoo.define('website_geonames', function (require) {
          * @private
          */
         _onZipIDChange: async function () {
-            const self = this;
-            self.data = self.choices.getValue().customProperties;
-            await this._adaptCountrySelect();
-            setTimeout(function () {
-                (self.$state_id.val(self.data.state).trigger('change'));
-            },1000)
-            self.$city.val(self.data.city).trigger('change');
-            self.$zip.val(self.data.zip).trigger('change');
+            this.data = this.choices.getValue().customProperties;
+            this.$country_id.val(this.data.country).trigger('change');
+            this.$city.val(this.data.city).trigger('change');
+            this.$zip.val(this.data.zip).trigger('change');
         },
     })
-
 });
