@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+        <template id="slide_icon_inherited" inherit_id="website_slides.slide_icon" name="Slide Icon Inherited">
+            <xpath expr="//i" position="after">
+                <i t-if="slide.slide_type == 'audio'" t-att-class="'fa fa-file-audio-o %s' % icon_class"></i>
+            </xpath>
+        </template>
+    </data>
+</odoo>
