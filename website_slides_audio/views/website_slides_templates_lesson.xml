@@ -13,33 +13,40 @@
             <xpath expr="//div[hasclass('o_wslides_lesson_content_type')]" position="inside">
                 <div t-if="slide.slide_type == 'audio'" class="bg-white p-3">
                     <section
-                            class="s_cover bg-black-50 pt96 pb96 o_colored_level s_parallax_no_overflow_hidden oe_img_bg o_bg_img_center"
-                            data-scroll-background-ratio="0" data-snippet="s_cover"
-                            t-att-style="'background-image:url(\'/web/content/slide.slide/%s/image_1920/\')' % slide.id"
-                            data-gl-filter="blur">
+                        class="s_cover parallax s_parallax_is_fixed bg-black-50 pt96 pb96 o_colored_level o_half_screen_height"
+                        data-scroll-background-ratio="1" data-snippet="s_cover" data-name="Cover"
+                        style="background-image: none;">
+                        <span class="s_parallax_bg oe_img_bg" t-att-style="'background-image:url(\'/web/content/slide.slide/%s/image_1920/\'); background-position: center; filter: blur(1px)' % slide.id" t-attf-data-mimetype="image/jpeg" t-attf-data-gl-filter="blur"/>
                         <div class="o_we_bg_filter bg-black-50"></div>
-                        <div class="s_allow_columns container" data-original-title="" title="">
+                        <div class="s_allow_columns container"
+                             style="padding-left: 16px !important; padding-right: 16px !important;"
+                             data-original-title=""
+                             title="">
                             <div class="row">
                                 <div class="o_colored_level col-lg-10 offset-lg-1">
                                     <h1 style="text-align: center;" t-esc="slide.name">
-                                        <font style="font-size: 62px; font-weight: bold;"></font>
+                                        <font style="font-size: 62px; font-weight: bold;"/>
                                     </h1>
-                                    <p class="lead" style="text-align: center;" data-original-title="" title=""
-                                       aria-describedby="tooltip559572">
+                                    <p class="lead" style="text-align: center;" data-original-title="" title="">
                                         <t t-out="slide.audio_embed_code"/>
                                     </p>
-                                    <p style="text-align: center;" data-original-title="" title=""
-                                       aria-describedby="tooltip473850">
-                                        <a t-if="slide.datas"
-                                           t-att-href="'/web/content/slide.slide/%s/audio_file?download=true' % slide.id">
-                                            <button class="btn btn-primary"><i class="fa fa-file-audio-o"/>Download
+                                    <p style="text-align: center;" data-original-title="" title="">
+                                        <a t-if="slide.audio_file"
+                                           t-att-href="'/web/content/slide.slide/%s/audio_file/%s?download=true' % (slide.id, slide.audio_filename)">
+                                            <button class="btn btn-primary">
+                                                <i class="fa fa-file-audio-o"
+                                                   style="padding-left: 10px; padding-right: 10px;"/>
+                                                Download
                                                 audio file
                                             </button>
                                         </a>
                                         <a t-if="slide.datas"
-                                           t-att-href="'/web/content/slide.slide/%s/datas' % slide.id"
+                                           t-att-href="'/web/content/slide.slide/%s/datas/%s' % (slide.id, slide.datas_filename)"
                                            target="_blank">
-                                            <button class="btn btn-primary"><i class="fa fa-file-pdf-o"/>Open the file
+                                            <button class="btn btn-primary">
+                                                <i class="fa fa-file-pdf-o"
+                                                   style="padding-left: 10px; padding-right: 10px;"/>
+                                                Open the file
                                             </button>
                                         </a>
                                     </p>

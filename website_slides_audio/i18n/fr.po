@@ -1,0 +1,223 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* website_slides_audio
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-31 14:34+0000\n"
+"PO-Revision-Date: 2023-08-31 14:34+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: website_slides_audio
+#: model_terms:ir.ui.view,arch_db:website_slides_audio.embed_slide
+msgid ""
+"<i class=\"fa fa-circle-o-notch fa-spin mr-2\"/>\n"
+"                                            <b>Loading...</b>"
+msgstr ""
+"<i class=\"fa fa-circle-o-notch fa-spin mr-2\"/>\n"
+"                                            <b>Chargement...</b>"
+
+#. module: website_slides_audio
+#: model_terms:ir.ui.view,arch_db:website_slides_audio.embed_slide_inherit
+msgid ""
+"<i class=\"fa fa-circle-o-notch fa-spin mr-2\"/>\n"
+"                                    <b>Loading...</b>"
+msgstr ""
+"<i class=\"fa fa-circle-o-notch fa-spin mr-2\"/>\n"
+"                                    <b>Chargement...</b>"
+
+#. module: website_slides_audio
+#: model_terms:ir.ui.view,arch_db:website_slides_audio.embed_slide
+msgid ""
+"<i class=\"fa fa-code\"/>\n"
+"                                            Embed"
+msgstr ""
+"<i class=\"fa fa-code\"/>\n"
+"                                            Encapsulé"
+
+#. module: website_slides_audio
+#: model_terms:ir.ui.view,arch_db:website_slides_audio.slide_content_detailled_inherit
+msgid ""
+"<i class=\"fa fa-desktop mr-2\"/>\n"
+"                    <span class=\"d-none d-sm-inline-block\">Fullscreen</span>"
+msgstr ""
+"<i class=\"fa fa-desktop mr-2\"/>\n"
+"                    <span class=\"d-none d-sm-inline-block\">Plein écran</span>"
+
+#. module: website_slides_audio
+#: model_terms:ir.ui.view,arch_db:website_slides_audio.embed_slide
+msgid ""
+"<i class=\"fa fa-envelope\"/>\n"
+"                                            Email"
+msgstr ""
+"<i class=\"fa fa-envelope\"/>\n"
+"                                            Courriel"
+
+#. module: website_slides_audio
+#: model_terms:ir.ui.view,arch_db:website_slides_audio.slide_content_detailled_inherit
+msgid ""
+"<i class=\"fa fa-file-audio-o\"/>Download\n"
+"                                                audio file"
+msgstr "<i class=\"fa fa-file-audio-o\"/> Télécharger l'audio"
+
+#. module: website_slides_audio
+#: model_terms:ir.ui.view,arch_db:website_slides_audio.slide_content_detailled_inherit
+msgid "<i class=\"fa fa-file-pdf-o\"/>Open the file"
+msgstr "<i class=\"fa fa-file-pdf-o\"/> Ouvrir le fichier"
+
+#. module: website_slides_audio
+#: model_terms:ir.ui.view,arch_db:website_slides_audio.embed_slide
+msgid ""
+"<i class=\"fa fa-share-alt\"/>\n"
+"                                            Share"
+msgstr ""
+"<i class=\"fa fa-share-alt\"/>\n"
+"                                            Partager"
+
+#. module: website_slides_audio
+#: model_terms:ir.ui.view,arch_db:website_slides_audio.embed_slide
+msgid ""
+"<span id=\"first\" class=\"mr-1 mr-sm-2\" title=\"First slide\" aria-label=\"First slide\" role=\"button\">\n"
+"                                            <i class=\"fa fa-step-backward\"/>\n"
+"                                        </span>\n"
+"                                        <span id=\"previous\" class=\"mx-1 mx-sm-2\" title=\"Previous slide\" aria-label=\"Previous slide\" role=\"button\">\n"
+"                                            <i class=\"fa fa-arrow-circle-left\"/>\n"
+"                                        </span>\n"
+"                                        <span id=\"next\" class=\"mx-1 mx-sm-2\" title=\"Next slide\" aria-label=\"Next slide\" role=\"button\">\n"
+"                                            <i class=\"fa fa-arrow-circle-right\"/>\n"
+"                                        </span>\n"
+"                                        <span id=\"last\" class=\"mx-1 mx-sm-2\" title=\"Last slide\" aria-label=\"Last slide\" role=\"button\">\n"
+"                                            <i class=\"fa fa-step-forward\"/>\n"
+"                                        </span>"
+msgstr ""
+"<span id=\"first\" class=\"mr-1 mr-sm-2\" title=\"Premier contenu\" aria-label=\"Premier contenu\" role=\"button\">\n"
+"                                            <i class=\"fa fa-step-backward\"/>\n"
+"                                        </span>\n"
+"                                        <span id=\"previous\" class=\"mx-1 mx-sm-2\" title=\"Contenu précédent\" aria-label=\"Contenu précédent\" role=\"button\">\n"
+"                                            <i class=\"fa fa-arrow-circle-left\"/>\n"
+"                                        </span>\n"
+"                                        <span id=\"next\" class=\"mx-1 mx-sm-2\" title=\"Contenu suivant\" aria-label=\"Contenu suivant\" role=\"button\">\n"
+"                                            <i class=\"fa fa-arrow-circle-right\"/>\n"
+"                                        </span>\n"
+"                                        <span id=\"last\" class=\"mx-1 mx-sm-2\" title=\"Dernier contenu\" aria-label=\"Dernier contenu\" role=\"button\">\n"
+"                                            <i class=\"fa fa-step-forward\"/>\n"
+"                                        </span>"
+
+#. module: website_slides_audio
+#: model_terms:ir.ui.view,arch_db:website_slides_audio.embed_slide
+msgid ""
+"<span id=\"fullscreen\" class=\"ml-1 ml-sm-2\" title=\"View fullscreen\" aria-label=\"Fullscreen\" role=\"button\">\n"
+"                                            <i class=\"fa fa-arrows-alt\"/>\n"
+"                                        </span>"
+msgstr ""
+"<span id=\"fullscreen\" class=\"ml-1 ml-sm-2\" title=\"View fullscreen\" aria-label=\"Plein écran\" role=\"button\">\n"
+"                                            <i class=\"fa fa-arrows-alt\"/>\n"
+"                                        </span>"
+
+#. module: website_slides_audio
+#: model_terms:ir.ui.view,arch_db:website_slides_audio.embed_slide
+msgid ""
+"<span id=\"zoomout\" class=\"d-none d-sm-inline ml-2 mr-2\" title=\"Zoom out\" aria-label=\"Zoom out\" role=\"button\">\n"
+"                                            <i class=\"fa fa-search-minus\"/>\n"
+"                                        </span>\n"
+"                                        <span id=\"zoomin\" class=\"d-none d-sm-inline\" title=\"Zoom in\" aria-label=\"Zoom in\" role=\"button\">\n"
+"                                            <i class=\"fa fa-search-plus\"/>\n"
+"                                        </span>"
+msgstr ""
+"<span id=\"zoomout\" class=\"d-none d-sm-inline ml-2 mr-2\" title=\"Dézoomer\" aria-label=\"Dézoomer\" role=\"button\">\n"
+"                                            <i class=\"fa fa-search-minus\"/>\n"
+"                                        </span>\n"
+"                                        <span id=\"Zoomer\" class=\"d-none d-sm-inline\" title=\"Zoomer\" aria-label=\"Zoom in\" role=\"button\">\n"
+"                                            <i class=\"fa fa-search-plus\"/>\n"
+"                                        </span>"
+
+#. module: website_slides_audio
+#: model_terms:ir.ui.view,arch_db:website_slides_audio.view_slide_slide_form_inherit
+msgid "Attachment"
+msgstr "Pièce jointe"
+
+#. module: website_slides_audio
+#: model:ir.model.fields.selection,name:website_slides_audio.selection__slide_slide__slide_type__audio
+msgid "Audio"
+msgstr ""
+
+#. module: website_slides_audio
+#: model:ir.model.fields,field_description:website_slides_audio.field_slide_slide__audio_embed_code
+#: model:ir.model.fields,help:website_slides_audio.field_slide_slide__audio_embed_code
+msgid "Audio Embed Code"
+msgstr "Code embed de l'audio"
+
+#. module: website_slides_audio
+#: model:ir.model.fields,field_description:website_slides_audio.field_slide_slide__audio_file
+#: model:ir.model.fields,help:website_slides_audio.field_slide_slide__audio_file
+#: model_terms:ir.ui.view,arch_db:website_slides_audio.view_slide_slide_form_inherit
+msgid "Audio File"
+msgstr "Fichier audio"
+
+#. module: website_slides_audio
+#: model:ir.model,name:website_slides_audio.model_slide_channel
+msgid "Course"
+msgstr "Cours"
+
+#. module: website_slides_audio
+#: code:addons/website_slides_audio/models/slide_slide.py:0
+#, python-format
+msgid "Course: %s"
+msgstr ""
+
+#. module: website_slides_audio
+#: model_terms:ir.ui.view,arch_db:website_slides_audio.embed_slide
+msgid "Download"
+msgstr "Télécharger"
+
+#. module: website_slides_audio
+#: model_terms:ir.ui.view,arch_db:website_slides_audio.embed_slide
+msgid "Download Content"
+msgstr "Télécharger le contenu"
+
+#. module: website_slides_audio
+#: model:ir.model,name:website_slides_audio.model_ir_http
+msgid "HTTP Routing"
+msgstr "Routage HTTP"
+
+#. module: website_slides_audio
+#: model:ir.model.fields,field_description:website_slides_audio.field_slide_slide__nbr_audio
+msgid "Number of Audio"
+msgstr "Nombre d'audio"
+
+#. module: website_slides_audio
+#: model:ir.model.fields,field_description:website_slides_audio.field_slide_channel__nbr_audio
+msgid "Number of audio"
+msgstr "Nombre d'audio"
+
+#. module: website_slides_audio
+#: model_terms:ir.ui.view,arch_db:website_slides_audio.embed_slide
+#: model_terms:ir.ui.view,arch_db:website_slides_audio.embed_slide_inherit
+msgid "Slide image"
+msgstr ""
+
+#. module: website_slides_audio
+#: model:ir.model,name:website_slides_audio.model_slide_slide
+msgid "Slides"
+msgstr "Diapositives"
+
+#. module: website_slides_audio
+#: model:ir.model.fields,help:website_slides_audio.field_slide_slide__slide_type
+msgid ""
+"The document type will be set automatically based on the document URL and "
+"properties (e.g. height and width for presentation and document)."
+msgstr ""
+"Le type du document sera définit automatiquement selon son URL et ses "
+"propriétés (ex: hauteur et largeur pour une présentation ou un document)"
+
+#. module: website_slides_audio
+#: model:ir.model.fields,field_description:website_slides_audio.field_slide_slide__slide_type
+msgid "Type"
+msgstr ""

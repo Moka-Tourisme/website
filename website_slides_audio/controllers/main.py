@@ -18,7 +18,11 @@ class Binary(main.Binary):
     def content_common(self, xmlid=None, model='ir.attachment', id=None, field='datas',
                        filename=None, filename_field='name', unique=None, mimetype=None,
                        download=None, data=None, token=None, access_token=None, **kw):
-        print("LA web content nouvelle")
+
+        if field == 'datas':
+            filename_field = "datas_filename"
+        elif field == 'audio_file':
+            filename_field = "audio_filename"
         return request.env['ir.http']._get_content_common(xmlid=xmlid, model=model, res_id=id, field=field,
                                                           unique=unique, filename=filename,
                                                           filename_field=filename_field, download=download,

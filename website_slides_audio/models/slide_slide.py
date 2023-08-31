@@ -48,11 +48,21 @@ class SlideInherit(models.Model):
         sanitize=False,
     )
 
+    audio_filename = fields.Char(
+        string='Audio File Name',
+        help='Audio File Name',
+    )
+
     nbr_audio = fields.Integer(
         string='Number of Audio',
         compute='_compute_slides_statistics',
         store=True,
         compute_sudo=False,
+    )
+
+    datas_filename = fields.Char(
+        string='File Name',
+        help='File Name',
     )
 
     @api.depends('slide_type', 'mime_type', 'audio_file')
@@ -62,7 +72,7 @@ class SlideInherit(models.Model):
                 # Convert the audio_file binary data to base64
                 audio_base64 = record.audio_file.decode('utf-8')
                 # Create the audio tag like
-                audio_tag = f'<audio controls style="min-width: 100%" src="data:audio/mpeg;base64,{audio_base64}"></audio>'
+                audio_tag = f'<audio controls preload="none" style="min-width: 100%" src="data:audio/mpeg;base64,{audio_base64}"></audio>'
                 record.audio_embed_code = audio_tag
             else:
                 record.audio_embed_code = False
