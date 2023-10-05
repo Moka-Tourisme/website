@@ -14,6 +14,8 @@ from odoo.osv import expression
 from odoo.tools import is_html_empty
 
 _logger = logging.getLogger(__name__)
+
+
 class Channel(models.Model):
     """ A channel is a container of slides. """
     _inherit = 'slide.channel'
@@ -24,11 +26,12 @@ class Channel(models.Model):
 
         Returns the removed 'slide.channel.partner's (! as sudo !)
         """
+        slide_partners_sudo = []
         to_leave = self._filter_remove_members(
             target_partners, **member_values)
         if to_leave:
             existing_to_remove = self.env['slide.channel.partner'].sudo().search([
-                ('channel_id', 'in', self.ids),
+                ('channel_id', 'in', to_leave.ids),
                 ('partner_id', 'not in', target_partners.ids)
             ])
             existing_to_remove_map = dict((cid, list()) for cid in self.ids)
@@ -44,7 +47,6 @@ class Channel(models.Model):
                     to_remove_values)
             return slide_partners_sudo
         return self.env['slide.channel.partner'].sudo()
-
 
     def _filter_remove_members(self, target_partners, **member_values):
         allowed = self.filtered(lambda channel: channel.enroll == 'public')

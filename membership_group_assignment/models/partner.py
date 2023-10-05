@@ -21,7 +21,6 @@ class PartnerInherit(models.Model):
         today = fields.Date.today()
         for partner in self:
             state = 'none'
-
             partner.membership_start = self.env['membership.membership_line'].search([
                 ('partner', '=', partner.associate_member.id or partner.id), ('date_cancel', '=', False)
             ], limit=1, order='date_from').date_from
@@ -40,7 +39,7 @@ class PartnerInherit(models.Model):
                     partner.membership_state = 'free'
                     continue
             if partner.associate_member:
-                partner.associate_member._compute_membership_state()
+                # partner.associate_member._compute_membership_state()
                 partner.membership_state = partner.associate_member.membership_state
                 continue
 
@@ -49,8 +48,6 @@ class PartnerInherit(models.Model):
                            (mline.date_from or date.min) <= today and \
                            mline.account_invoice_line.move_id.partner_id == partner]
 
-            for state in line_states:
-                print(state)
             if 'paid' in line_states:
                 state = 'paid'
             elif 'invoiced' in line_states:

@@ -11,6 +11,7 @@
     'license': 'AGPL-3',
     "data": {
         'views/product_views.xml',
-        'data/membership_data.xml'
+        'views/membership_views.xml',
+        'data/membership_data.xml',
     }
 }
